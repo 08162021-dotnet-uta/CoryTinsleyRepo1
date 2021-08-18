@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/clypto/.dotnet/store/|arch|/|tfm|",
+      "/home/clypto/.nuget/packages"
+    ]
+  }
+}

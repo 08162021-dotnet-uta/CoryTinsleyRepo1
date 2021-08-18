@@ -76,9 +76,9 @@ namespace HelloCsharp
       return a / b;
     }
 
-    static String Print(int a, int b)
+    static void Print(int a, int b)
     {
-      return null;
+      Console.WriteLine("Your selections were: " + a + b);
     }
   }
 }

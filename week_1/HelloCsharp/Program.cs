@@ -78,7 +78,7 @@ namespace HelloCsharp
 
     static void Print(int a, int b)
     {
-      Console.WriteLine("Your selections were: " + a + b);
+      Console.WriteLine("Your selections were: " + a + " " + b);
     }
   }
 }

@@ -1,55 +1,102 @@
 ﻿using System;
 using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Abstracts;
-using Project0.StoreApplication.Storage;
+using Project0.StoreApplication.Storage.Repositories;
+using Project0.StoreApplication.Client.Singletons;
+using Project0.StoreApplication.Domain.Models;
 using Serilog;
 
 namespace Project0.StoreApplication.Client
 {
+
+  /// <summary>
+  /// Defines the Program Class
+  /// </summary>
   class Program
   {
-    static void Main(string[] args)
+
+    private static readonly StoreRepository _storeRepo = new StoreRepository();
+    private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
+    private static readonly CustomerSingleton _customerSingleton = CustomerSingleton.Instance;
+    private static readonly CustomerRepository _CustomerRepo = new CustomerRepository();
+
+
+    private const string _logFilePath = @"/home/clypto/revature/training_code/projects/data/logs.txt";
+
+    private static void Main(string[] args)
     {
       Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
-      PrintAllStoreLocations();
-
-      System.Console.WriteLine(SelectStore());
+      Run();
     }
 
-    static void PrintAllStoreLocations()
+
+
+
+    private static void Run()
+    {
+
+
+      // if (_customerSingleton.Customers.Count == 0)
+      // {
+      //   _customerSingleton.Add(new Customer());
+      // }
+
+
+
+      var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
+      var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
+
+      Console.WriteLine(customer);
+    }
+    /// <summary>
+    /// Print list to console
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    static void ConsoleOutput<T>(List<T> data) where T : class
     {
       int i = 1;
+      Log.Information($"Method Output{typeof(T)}");
 
-      var storeRepository = new StoreRepository();
-
-      foreach (var store in storeRepository.Stores)
+      foreach (var item in data)
       {
-        System.Console.WriteLine(i + " - " + store);
-        i += 1;
+        System.Console.WriteLine($"{i++} - {item}");
+        //i += 1;
       }
     }
 
 
-    static Store SelectStore()
+    // static Store SelectStore()
+    // {
+
+
+    //   //var sr = _storeRepo.Stores;
+
+    //   //PrintAllStoreLocations();
+
+    //   Console.WriteLine("Select a store: ");
+
+    //   var option = int.Parse(Console.ReadLine());
+    //   //var store = sr[option - 1];
+
+    //   return Store;
+
+    // }
+    /// <summary>
+    /// Capture User input
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    static private int CaptureOutput<T>(List<T> data) where T : class
     {
-      //Logger Monitoring Levels
-      //verbose
-      //debug
-      //info
-      //warn
-      //error
-      //fatal
+      Log.Information($"Capture Output{typeof(T)}");
 
-      var sr = new StoreRepository().Stores;
+      ConsoleOutput<T>(data);
 
-      Console.WriteLine("Select a store: ");
+      Console.WriteLine($"Select {typeof(T).Name}: ");
 
-      var option = int.Parse(Console.ReadLine());
-      var store = sr[option - 1];
+      int selected = int.Parse(Console.ReadLine());
 
-      return store;
-
+      return selected;
     }
   }
 }

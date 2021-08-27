@@ -1,16 +1,13 @@
-
-
 using Project0.StoreApplication.Domain.Abstracts;
 
 namespace Project0.StoreApplication.Domain.Models
 {
 
-  public class Order
+  public class MusicStore : Store
   {
-
-    public Store MyStore { get; set; }
-
-
+    public MusicStore()
+    {
+      Name = "Music Store ";
+    }
   }
-
 }

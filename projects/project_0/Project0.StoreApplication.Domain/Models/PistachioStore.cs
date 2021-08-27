@@ -1,16 +1,13 @@
-
-
 using Project0.StoreApplication.Domain.Abstracts;
 
 namespace Project0.StoreApplication.Domain.Models
 {
 
-  public class Order
+  public class PistachioStore : Store
   {
-
-    public Store MyStore { get; set; }
-
-
+    public PistachioStore()
+    {
+      Name = "Pistachio Store";
+    }
   }
-
 }

@@ -3,11 +3,11 @@ using Project0.StoreApplication.Domain.Abstracts;
 namespace Project0.StoreApplication.Domain.Models
 {
 
-  public class PistachioStore : Store
+  public class PenStore : Store
   {
-    public PistachioStore()
+    public PenStore()
     {
-      Name = "Pistachio Store";
+      Name = "Pen Store";
     }
   }
 }

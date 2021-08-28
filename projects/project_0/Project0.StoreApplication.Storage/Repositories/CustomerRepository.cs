@@ -18,6 +18,7 @@ namespace Project0.StoreApplication.Storage.Repositories
       var Customer2 = new Customer("Sam");
       var Customer3 = new Customer("Ryan");
 
+
       if (_fileAdapter.ReadFromFile<Customer>(_path) == null)
       {
         _fileAdapter.WriteToFile<Customer>(_path, new List<Customer>() { });

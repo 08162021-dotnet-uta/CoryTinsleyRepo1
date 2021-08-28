@@ -18,7 +18,7 @@ namespace Project0.StoreApplication.Client
     private static readonly StoreRepository _storeRepo = new StoreRepository();
     private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
     private static readonly CustomerSingleton _customerSingleton = CustomerSingleton.Instance;
-    private static readonly CustomerRepository _CustomerRepo = new CustomerRepository();
+    private static readonly CustomerRepository _customerRepo = new CustomerRepository();
 
 
     private const string _logFilePath = @"/home/clypto/revature/training_code/projects/data/logs.txt";
@@ -37,14 +37,16 @@ namespace Project0.StoreApplication.Client
     {
 
 
-      // if (_customerSingleton.Customers.Count == 0)
-      // {
-      //   _customerSingleton.Add(new Customer());
-      // }
+      if (_customerSingleton.Customers.Count == 0)
+      {
+        _customerSingleton.Add(new Customer());
+      }
 
-
-
+      //saves customer the user selects 
       var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
+      Console.WriteLine("You selected: " + customer);
+
+      //saves store the user selec
       var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
 
       Console.WriteLine(customer);
@@ -88,13 +90,14 @@ namespace Project0.StoreApplication.Client
     /// <typeparam name="T"></typeparam>
     static private int CaptureOutput<T>(List<T> data) where T : class
     {
-      Log.Information($"Capture Output{typeof(T)}");
 
       ConsoleOutput<T>(data);
 
       Console.WriteLine($"Select {typeof(T).Name}: ");
 
       int selected = int.Parse(Console.ReadLine());
+
+
 
       return selected;
     }

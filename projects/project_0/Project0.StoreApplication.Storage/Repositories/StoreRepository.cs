@@ -19,6 +19,9 @@ namespace Project0.StoreApplication.Storage.Repositories
 
       var ComputerStore = new ComputerStore();
       var MusicStore = new MusicStore();
+      var
+
+
       if (_fileAdapter.ReadFromFile<Store>(_path) == null)
       {
         _fileAdapter.WriteToFile<Store>(_path, new List<Store>());
@@ -31,6 +34,13 @@ namespace Project0.StoreApplication.Storage.Repositories
     public bool Delete()
     {
       throw new System.NotImplementedException();
+    }
+
+    public bool Insert(List<Store> entry)
+    {
+      _fileAdapter.WriteToFile<Store>(_path, entry);
+
+      return true;
     }
 
     public bool Insert(Store entry)

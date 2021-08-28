@@ -15,7 +15,7 @@ namespace Project0.StoreApplication.Storage.Adapters
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-      //builder.UseSQLServer(@"server=(localdb)\MSSQLLocalDB;database=StoreApplicationDB;Trusted_Connection=True;");
+      builder.UseSqlServer(@"server=(localdb)\MSSQLLocalDB;database=StoreApplicationDB;Trusted_Connection=True;");
     }
 
 

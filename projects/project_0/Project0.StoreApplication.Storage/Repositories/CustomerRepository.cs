@@ -24,6 +24,8 @@ namespace Project0.StoreApplication.Storage.Repositories
         _fileAdapter.WriteToFile<Customer>(_path, new List<Customer>() { });
       }
 
+      Insert(new List<Customer> { Customer1, Customer2, Customer3 });
+
     }
 
 
@@ -32,7 +34,10 @@ namespace Project0.StoreApplication.Storage.Repositories
       throw new System.NotImplementedException();
     }
 
-
+    public void Insert(List<Customer> entry)
+    {
+      _fileAdapter.WriteToFile<Customer>(_path, entry);
+    }
     public bool Insert(Customer entry)
     {
       _fileAdapter.WriteToFile<Customer>(_path, new List<Customer> { entry });

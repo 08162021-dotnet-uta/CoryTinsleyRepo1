@@ -37,10 +37,10 @@ namespace Project0.StoreApplication.Client
     {
 
 
-      if (_customerSingleton.Customers.Count == 0)
-      {
-        _customerSingleton.Add(new Customer());
-      }
+      // if (_customerSingleton.Customers.Count == 0)
+      // {
+      //   _customerSingleton.Add(new Customer());
+      // }
 
       //saves customer the user selects 
       var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];

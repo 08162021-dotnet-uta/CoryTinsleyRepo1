@@ -19,7 +19,7 @@ namespace Project0.StoreApplication.Storage.Repositories
 
       var ComputerStore = new ComputerStore();
       var MusicStore = new MusicStore();
-      var
+
 
 
       if (_fileAdapter.ReadFromFile<Store>(_path) == null)

@@ -23,4 +23,4 @@ namespace Project0.StoreApplication.Domain.Models
     }
   }
 }
-// {Orders.Count}
+//{Orders.Count}

@@ -15,12 +15,10 @@ namespace Project0.StoreApplication.Client
   class Program
   {
 
-    private readonly StoreRepository _storeRepo = StoreRepository.GetInstance();
     private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
     private static readonly CustomerSingleton _customerSingleton = CustomerSingleton.Instance;
-    private static readonly CustomerRepository _customerRepo = new CustomerRepository();
     private static readonly ProductSingleton _productSingleton = ProductSingleton.Instance;
-    private static readonly ProductRepository _productRepo = new ProductRepository();
+    private static readonly OrderSingleton _orderSingleton = OrderSingleton.Instance;
     private static List<string> confirmationList = new List<string>() { "Yes", "No" };
 
 
@@ -51,12 +49,11 @@ namespace Project0.StoreApplication.Client
       var selectedProduct = CaptureOutput<Product>(products) - 1;
 
       Console.WriteLine($"Do you want to buy {products[selectedProduct]}");
-      var choice = CaptureOutput<string>(confirmationList) - 1;
+      var choice = CaptureOutput<string>(confirmationList);
 
       if (choice == 1)
-        //Place code for order
+        _orderSingleton.CreateOrder(new List<Product>() { products[selectedProduct] }, store, customer);
 
-        Console.WriteLine(customer);
     }
 
 

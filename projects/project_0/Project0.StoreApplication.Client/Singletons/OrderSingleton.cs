@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Project0.StoreApplication.Domain.Abstracts;
 using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Repositories;
 
@@ -34,6 +35,21 @@ namespace Project0.StoreApplication.Client.Singletons
     {
       Orders = _orderRepository.Select();
     }
+
+    /// <summary>
+    /// Creates order Object before storing
+    /// </summary>
+    /// <param name="products"></param>
+    /// <param name="store"></param>
+    /// <param name="customer"></param>
+    public void CreateOrder(List<Product> products, Store store, Customer customer)
+    {
+
+      var order = new Order(products, store, customer);
+      Add(order);
+
+    }
+
 
     /// <summary>
     /// Add order object to List

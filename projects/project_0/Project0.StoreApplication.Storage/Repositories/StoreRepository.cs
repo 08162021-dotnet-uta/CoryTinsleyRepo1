@@ -17,10 +17,6 @@ namespace Project0.StoreApplication.Storage.Repositories
 
     private StoreRepository()
     {
-
-
-
-
       if (_fileAdapter.ReadFromFile<Store>(_path) == null)
       {
         _fileAdapter.WriteToFile<Store>(_path, new List<Store>()
@@ -30,9 +26,6 @@ namespace Project0.StoreApplication.Storage.Repositories
           new MusicStore()
         });
       }
-
-
-
     }
 
 

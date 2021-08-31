@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <MyStore xsi:type="PenStore">
+      <Name>Pen Store</Name>
+      <StoreID>2</StoreID>
+      <Orders />
+      <Products />
+    </MyStore>
+    <MyCustomer>
+      <Name>Sam</Name>
+    </MyCustomer>
+    <Products>
+      <Product>
+        <Name>One of those fancy pens that you dip in ink</Name>
+        <Price>5000.00</Price>
+        <StoreID>2</StoreID>
+      </Product>
+    </Products>
+  </Order>
+  <Order>
+    <MyStore xsi:type="ComputerStore">
+      <Name>Computer Store</Name>
+      <StoreID>1</StoreID>
+      <Orders />
+      <Products />
+    </MyStore>
+    <MyCustomer>
+      <Name>Clypto</Name>
+    </MyCustomer>
+    <Products>
+      <Product>
+        <Name>Generic CPU</Name>
+        <Price>59.99</Price>
+        <StoreID>1</StoreID>
+      </Product>
+    </Products>
+  </Order>
+</ArrayOfOrder>

@@ -9,7 +9,7 @@ namespace Project0.StoreApplication.Storage.Repositories
   public class OrderRepository : IRepository<Order>
   {
     private const string _path = @"/home/clypto/revature/training_code/projects/data/Orders.xml";
-
+    public List<Order> Orders { get; private set; }
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
 
     public OrderRepository()
@@ -18,6 +18,7 @@ namespace Project0.StoreApplication.Storage.Repositories
       {
         _fileAdapter.WriteToFile<Order>(_path, new List<Order>());
       }
+      Orders = Select();
     }
 
 
@@ -29,7 +30,8 @@ namespace Project0.StoreApplication.Storage.Repositories
 
     public bool Insert(Order entry)
     {
-      _fileAdapter.WriteToFile<Order>(_path, new List<Order> { entry });
+      Orders.Add(entry);
+      _fileAdapter.WriteToFile<Order>(_path, Orders);
 
       return true;
     }

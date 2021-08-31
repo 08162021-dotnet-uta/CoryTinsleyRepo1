@@ -16,6 +16,14 @@ namespace Project0.StoreApplication.Domain.Models
     public Order()
     {
 
+    }
+
+    public Order(List<Product> products, Store store, Customer customer)
+    {
+
+      MyCustomer = customer;
+      MyStore = store;
+      Products = products;
 
     }
 

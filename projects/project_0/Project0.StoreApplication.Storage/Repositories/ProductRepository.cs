@@ -18,8 +18,22 @@ namespace Project0.StoreApplication.Storage.Repositories
     {
       if (_fileAdapter.ReadFromFile<Product>(_path) == null)
       {
-        _fileAdapter.WriteToFile<Product>(_path, new List<Product>());
+        _fileAdapter.WriteToFile<Product>(_path, new List<Product>()
+        {
+          new Product("Generic CPU", 59.99m, 1),
+          new Product("Generic GPU", 100.00m, 1),
+          new Product("Super Fancy Case", 1000.00m, 1),
+
+          new Product("Pack of Ballpoint Pens", 5.00m, 2),
+          new Product("One of those fancy pens that you dip in ink", 5000.00m, 2),
+
+          new Product("CD that catches on fire if you use it", 5.55m, 3),
+          new Product("Broken pair of branded headphones", 150.00m, 3)
+
+
+        });
       }
+
     }
 
 

@@ -14,17 +14,20 @@ namespace Project0.StoreApplication.Storage.Repositories
     public CustomerRepository()
     {
 
-      var Customer1 = new Customer("Clypto");
-      var Customer2 = new Customer("Sam");
-      var Customer3 = new Customer("Ryan");
+
+
 
 
       if (_fileAdapter.ReadFromFile<Customer>(_path) == null)
       {
-        _fileAdapter.WriteToFile<Customer>(_path, new List<Customer>() { });
-      }
+        _fileAdapter.WriteToFile<Customer>(_path, new List<Customer>()
+        {
+          new Customer("Clypto"),
+          new Customer("Sam"),
+          new Customer("Ryan")
 
-      Insert(new List<Customer> { Customer1, Customer2, Customer3 });
+        });
+      }
 
     }
 

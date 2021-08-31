@@ -15,17 +15,20 @@ namespace Project0.StoreApplication.Client
   class Program
   {
 
-    private static readonly StoreRepository _storeRepo = new StoreRepository();
+    private readonly StoreRepository _storeRepo = StoreRepository.GetInstance();
     private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
     private static readonly CustomerSingleton _customerSingleton = CustomerSingleton.Instance;
     private static readonly CustomerRepository _customerRepo = new CustomerRepository();
+    private static readonly ProductSingleton _productSingleton = ProductSingleton.Instance;
+    private static readonly ProductRepository _productRepo = new ProductRepository();
+    private static List<string> confirmationList = new List<string>() { "Yes", "No" };
 
 
     private const string _logFilePath = @"/home/clypto/revature/training_code/projects/data/logs.txt";
 
     private static void Main(string[] args)
     {
-      Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+      Log.Logger = new LoggerConfiguration().WriteTo.File(_logFilePath).CreateLogger();
 
       Run();
     }
@@ -36,21 +39,28 @@ namespace Project0.StoreApplication.Client
     private static void Run()
     {
 
-
-      // if (_customerSingleton.Customers.Count == 0)
-      // {
-      //   _customerSingleton.Add(new Customer());
-      // }
-
       //saves customer the user selects 
       var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
       Console.WriteLine("You selected: " + customer);
 
-      //saves store the user selec
+      //saves store the user selects
       var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
 
-      Console.WriteLine(customer);
+
+      var products = _productSingleton.SortProducts(store);
+      var selectedProduct = CaptureOutput<Product>(products) - 1;
+
+      Console.WriteLine($"Do you want to buy {products[selectedProduct]}");
+      var choice = CaptureOutput<string>(confirmationList) - 1;
+
+      if (choice == 1)
+        //Place code for order
+
+        Console.WriteLine(customer);
     }
+
+
+
     /// <summary>
     /// Print list to console
     /// </summary>
@@ -58,7 +68,7 @@ namespace Project0.StoreApplication.Client
     static void ConsoleOutput<T>(List<T> data) where T : class
     {
       int i = 1;
-      Log.Information($"Method Output{typeof(T)}");
+      Log.Information($"Method Output<{typeof(T)}>");
 
       foreach (var item in data)
       {
@@ -68,22 +78,7 @@ namespace Project0.StoreApplication.Client
     }
 
 
-    // static Store SelectStore()
-    // {
 
-
-    //   //var sr = _storeRepo.Stores;
-
-    //   //PrintAllStoreLocations();
-
-    //   Console.WriteLine("Select a store: ");
-
-    //   var option = int.Parse(Console.ReadLine());
-    //   //var store = sr[option - 1];
-
-    //   return Store;
-
-    // }
     /// <summary>
     /// Capture User input
     /// </summary>

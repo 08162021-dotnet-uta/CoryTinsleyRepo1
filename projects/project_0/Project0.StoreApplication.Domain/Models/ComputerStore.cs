@@ -8,6 +8,7 @@ namespace Project0.StoreApplication.Domain.Models
     public ComputerStore()
     {
       Name = "Computer Store";
+      StoreID = 1;
     }
   }
 }

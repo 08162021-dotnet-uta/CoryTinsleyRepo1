@@ -8,10 +8,18 @@ namespace Project0.StoreApplication.Domain.Models
     public string Name { get; set; }
     public decimal Price { get; set; }
 
+    public int StoreID { get; set; }
+
     public Product()
     {
-      Name = "Generic CPU";
-      Price = 99.99m;
+
+    }
+    public Product(string name, decimal price, int i)
+    {
+      Name = name;
+      Price = price;
+      StoreID = i;
+
     }
 
     public override string ToString()

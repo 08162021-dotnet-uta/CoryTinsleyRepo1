@@ -14,20 +14,40 @@ namespace Project0.StoreApplication.Storage.Repositories
     private const string _path = @"/home/clypto/revature/training_code/projects/data/stores.xml";
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
 
-    public StoreRepository()
+
+    private StoreRepository()
     {
 
-      var ComputerStore = new ComputerStore();
-      var MusicStore = new MusicStore();
 
 
 
       if (_fileAdapter.ReadFromFile<Store>(_path) == null)
       {
-        _fileAdapter.WriteToFile<Store>(_path, new List<Store>());
+        _fileAdapter.WriteToFile<Store>(_path, new List<Store>()
+        {
+          new ComputerStore(),
+          new PenStore(),
+          new MusicStore()
+        });
       }
 
 
+
+    }
+
+
+
+    private static StoreRepository _storeRepository;
+
+    public static StoreRepository GetInstance()
+    {
+
+      if (_storeRepository == null)
+      {
+        _storeRepository = new StoreRepository();
+      }
+
+      return _storeRepository;
     }
 
 
@@ -36,12 +56,6 @@ namespace Project0.StoreApplication.Storage.Repositories
       throw new System.NotImplementedException();
     }
 
-    public bool Insert(List<Store> entry)
-    {
-      _fileAdapter.WriteToFile<Store>(_path, entry);
-
-      return true;
-    }
 
     public bool Insert(Store entry)
     {

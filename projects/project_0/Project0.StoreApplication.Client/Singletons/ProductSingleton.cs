@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Project0.StoreApplication.Domain.Abstracts;
 using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Repositories;
 
@@ -10,6 +11,7 @@ namespace Project0.StoreApplication.Client.Singletons
 
     private static ProductSingleton _productSingleton;
     private static readonly ProductRepository _productRepository = new ProductRepository();
+    private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
 
     public List<Product> Products { get; set; }
 
@@ -32,6 +34,31 @@ namespace Project0.StoreApplication.Client.Singletons
 
     }
 
+
+    /// <summary>
+    /// Sorts items into proper store List<>
+    /// </summary>
+    /// <param name="stores"></param>
+    /// <returns></returns>
+    public List<Product> SortProducts(Store store)
+    {
+      List<Product> localProduct = new List<Product>();
+
+      foreach (Product p in Products)
+      {
+        if (p.StoreID == store.StoreID)
+          localProduct.Add(p);
+
+      }
+
+      return localProduct;
+    }
+
+
+    /// <summary>
+    /// Adds new product to repository
+    /// </summary>
+    /// <param name="product"></param>
     public void Add(Product product)
     {
 
@@ -39,7 +66,6 @@ namespace Project0.StoreApplication.Client.Singletons
       Products = _productRepository.Select();
 
     }
-
 
   }
 }

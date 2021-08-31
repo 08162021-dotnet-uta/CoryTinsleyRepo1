@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Store xsi:type="ComputerStore">
+    <Name>Computer Store</Name>
+    <StoreID>1</StoreID>
+  </Store>
+  <Store xsi:type="PenStore">
+    <Name>Pen Store</Name>
+    <StoreID>2</StoreID>
+  </Store>
+  <Store xsi:type="MusicStore">
+    <Name>Music Store </Name>
+    <StoreID>3</StoreID>
+  </Store>
+</ArrayOfStore>

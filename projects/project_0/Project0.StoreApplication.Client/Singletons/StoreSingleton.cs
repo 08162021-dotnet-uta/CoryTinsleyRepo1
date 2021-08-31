@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Abstracts;
 using Project0.StoreApplication.Domain.Models;
-using Project0.StoreApplication.Storage;
 using Project0.StoreApplication.Storage.Repositories;
 
 namespace Project0.StoreApplication.Client.Singletons
@@ -12,9 +11,13 @@ namespace Project0.StoreApplication.Client.Singletons
   {
 
     public static StoreSingleton _storeSingleton;
-    private static readonly StoreRepository _storeRepository = new StoreRepository();
+    private static readonly StoreRepository _storeRepository = StoreRepository.GetInstance();
+
+    private static readonly ProductSingleton _productSingleton = ProductSingleton.Instance;
 
     public List<Store> Stores { get; set; }
+
+    public List<Product> Products { get; set; }
 
     public static StoreSingleton Instance
     {
@@ -40,7 +43,10 @@ namespace Project0.StoreApplication.Client.Singletons
       Stores = _storeRepository.Select();
     }
 
+    public void AddProducts(Product Product)
+    {
 
+    }
 
 
   }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Product>
+    <Name>Generic CPU</Name>
+    <Price>59.99</Price>
+    <StoreID>1</StoreID>
+  </Product>
+  <Product>
+    <Name>Generic GPU</Name>
+    <Price>100.00</Price>
+    <StoreID>1</StoreID>
+  </Product>
+  <Product>
+    <Name>Super Fancy Case</Name>
+    <Price>1000.00</Price>
+    <StoreID>1</StoreID>
+  </Product>
+  <Product>
+    <Name>Pack of Ballpoint Pens</Name>
+    <Price>5.00</Price>
+    <StoreID>2</StoreID>
+  </Product>
+  <Product>
+    <Name>One of those fancy pens that you dip in ink</Name>
+    <Price>5000.00</Price>
+    <StoreID>2</StoreID>
+  </Product>
+  <Product>
+    <Name>CD that catches on fire if you use it</Name>
+    <Price>5.55</Price>
+    <StoreID>3</StoreID>
+  </Product>
+  <Product>
+    <Name>Broken pair of branded headphones</Name>
+    <Price>150.00</Price>
+    <StoreID>3</StoreID>
+  </Product>
+</ArrayOfProduct>

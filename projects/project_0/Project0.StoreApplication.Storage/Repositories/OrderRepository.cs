@@ -9,6 +9,7 @@ namespace Project0.StoreApplication.Storage.Repositories
   public class OrderRepository : IRepository<Order>
   {
     private const string _path = @"/home/clypto/revature/training_code/projects/data/Orders.xml";
+
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
 
     public OrderRepository()

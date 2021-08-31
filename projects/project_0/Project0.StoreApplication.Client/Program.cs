@@ -56,6 +56,8 @@ namespace Project0.StoreApplication.Client
 
       Console.WriteLine(customer);
 
+      
+
     }
 
 

@@ -152,4 +152,99 @@
       </Product>
     </Products>
   </Order>
+  <Order>
+    <MyStore xsi:type="ComputerStore">
+      <Name>Computer Store</Name>
+      <StoreID>1</StoreID>
+      <Orders />
+      <Products />
+    </MyStore>
+    <MyCustomer>
+      <Name>Clypto</Name>
+      <Orders />
+    </MyCustomer>
+    <Products>
+      <Product>
+        <Name>Generic CPU</Name>
+        <Price>59.99</Price>
+        <StoreID>1</StoreID>
+      </Product>
+    </Products>
+  </Order>
+  <Order>
+    <MyStore xsi:type="ComputerStore">
+      <Name>Computer Store</Name>
+      <StoreID>1</StoreID>
+      <Orders />
+      <Products />
+    </MyStore>
+    <MyCustomer>
+      <Name>Clypto</Name>
+      <Orders />
+    </MyCustomer>
+    <Products>
+      <Product>
+        <Name>Generic CPU</Name>
+        <Price>59.99</Price>
+        <StoreID>1</StoreID>
+      </Product>
+    </Products>
+  </Order>
+  <Order>
+    <MyStore xsi:type="ComputerStore">
+      <Name>Computer Store</Name>
+      <StoreID>1</StoreID>
+      <Orders />
+      <Products />
+    </MyStore>
+    <MyCustomer>
+      <Name>Clypto</Name>
+      <Orders />
+    </MyCustomer>
+    <Products>
+      <Product>
+        <Name>Generic CPU</Name>
+        <Price>59.99</Price>
+        <StoreID>1</StoreID>
+      </Product>
+    </Products>
+  </Order>
+  <Order>
+    <MyStore xsi:type="ComputerStore">
+      <Name>Computer Store</Name>
+      <StoreID>1</StoreID>
+      <Orders />
+      <Products />
+    </MyStore>
+    <MyCustomer>
+      <Name>Clypto</Name>
+      <Orders />
+    </MyCustomer>
+    <Products>
+      <Product>
+        <Name>Generic CPU</Name>
+        <Price>59.99</Price>
+        <StoreID>1</StoreID>
+      </Product>
+    </Products>
+  </Order>
+  <Order>
+    <MyStore xsi:type="ComputerStore">
+      <Name>Computer Store</Name>
+      <StoreID>1</StoreID>
+      <Orders />
+      <Products />
+    </MyStore>
+    <MyCustomer>
+      <Name>Clypto</Name>
+      <Orders />
+    </MyCustomer>
+    <Products>
+      <Product>
+        <Name>Generic CPU</Name>
+        <Price>59.99</Price>
+        <StoreID>1</StoreID>
+      </Product>
+    </Products>
+  </Order>
 </ArrayOfOrder>

@@ -37,6 +37,8 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
+
+
     public bool Delete(Customer entry)
     {
       Customers.Remove(entry);

@@ -9,6 +9,8 @@ namespace Project0.StoreApplication.Storage.Repositories
   public class CustomerRepository : IRepository<Customer>
   {
     private const string _path = @"/home/clypto/revature/training_code/projects/data/Customers.xml";
+
+    public List<Customer> Customers { get; set; }
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
 
     public CustomerRepository()
@@ -29,21 +31,22 @@ namespace Project0.StoreApplication.Storage.Repositories
         });
       }
 
+      Customers = Select();
+
+
     }
 
 
-    public bool Delete()
+    public bool Delete(Customer entry)
     {
-      throw new System.NotImplementedException();
+      Customers.Remove(entry);
+      return true;
     }
 
-    public void Insert(List<Customer> entry)
-    {
-      _fileAdapter.WriteToFile<Customer>(_path, entry);
-    }
     public bool Insert(Customer entry)
     {
-      _fileAdapter.WriteToFile<Customer>(_path, new List<Customer> { entry });
+      Customers.Add(entry);
+      _fileAdapter.WriteToFile<Customer>(_path, Customers);
 
       return true;
     }
@@ -54,9 +57,12 @@ namespace Project0.StoreApplication.Storage.Repositories
       return _fileAdapter.ReadFromFile<Customer>(_path);
     }
 
-    public Customer Update()
+    public Customer Update(Customer entry)
     {
-      throw new System.NotImplementedException();
+      Delete(entry);
+      Customers.Add(entry);
+      _fileAdapter.WriteToFile<Customer>(_path, Customers);
+      return entry;
     }
   }
 }

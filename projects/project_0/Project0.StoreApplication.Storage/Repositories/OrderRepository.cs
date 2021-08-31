@@ -22,7 +22,7 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
-    public bool Delete()
+    public bool Delete(Order entry)
     {
       throw new System.NotImplementedException();
     }
@@ -42,7 +42,7 @@ namespace Project0.StoreApplication.Storage.Repositories
       return _fileAdapter.ReadFromFile<Order>(_path);
     }
 
-    public Order Update()
+    public Order Update(Order entry)
     {
       throw new System.NotImplementedException();
     }

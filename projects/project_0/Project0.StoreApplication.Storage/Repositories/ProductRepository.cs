@@ -37,7 +37,7 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
-    public bool Delete()
+    public bool Delete(Product entry)
     {
       throw new System.NotImplementedException();
     }
@@ -56,14 +56,11 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
-    public Store Update()
+    public Product Update(Product entry)
     {
       throw new System.NotImplementedException();
     }
 
-    Product IRepository<Product>.Update()
-    {
-      throw new System.NotImplementedException();
-    }
+
   }
 }

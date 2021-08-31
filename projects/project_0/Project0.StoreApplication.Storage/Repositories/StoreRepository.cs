@@ -44,7 +44,7 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
-    public bool Delete()
+    public bool Delete(Store entry)
     {
       throw new System.NotImplementedException();
     }
@@ -64,7 +64,7 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
-    public Store Update()
+    public Store Update(Store entry)
     {
       throw new System.NotImplementedException();
     }

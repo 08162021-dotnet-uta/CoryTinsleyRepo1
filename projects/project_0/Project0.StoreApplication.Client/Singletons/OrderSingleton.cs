@@ -48,6 +48,8 @@ namespace Project0.StoreApplication.Client.Singletons
       var order = new Order(products, store, customer);
       Add(order);
 
+      customer.Orders.Add(order);
+
     }
 
 

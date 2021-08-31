@@ -54,6 +54,8 @@ namespace Project0.StoreApplication.Client
       if (choice == 1)
         _orderSingleton.CreateOrder(new List<Product>() { products[selectedProduct] }, store, customer);
 
+      Console.WriteLine(customer);
+
     }
 
 
@@ -65,7 +67,7 @@ namespace Project0.StoreApplication.Client
     static void ConsoleOutput<T>(List<T> data) where T : class
     {
       int i = 1;
-      Log.Information($"Method Output<{typeof(T)}>");
+      Log.Information($"ConsoleOutput<{typeof(T)}>");
 
       foreach (var item in data)
       {

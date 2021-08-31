@@ -6,7 +6,7 @@ namespace Project0.StoreApplication.Domain.Interfaces
   public interface IRepository<T> where T : class
   {
 
-    bool Delete();
+    bool Delete(T entry);
 
 
     bool Insert(T entry);
@@ -15,6 +15,6 @@ namespace Project0.StoreApplication.Domain.Interfaces
     List<T> Select();
 
 
-    T Update();
+    T Update(T entry);
   }
 }

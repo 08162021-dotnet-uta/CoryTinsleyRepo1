@@ -45,12 +45,29 @@ namespace Project0.StoreApplication.Client.Singletons
     public void CreateOrder(List<Product> products, Store store, Customer customer)
     {
 
-      var order = new Order(products, store, customer);
+      var order = new Order(customer.CustomerKey, store.StoreID);
       Add(order);
 
       customer.Orders.Add(order);
 
     }
+
+    public void GrabOrders(List<Customer> customers)
+        {
+
+            List<Order> tempList = new List<Order>();
+            tempList = _orderRepository.Orders;
+            foreach( Customer c in customers)
+            {
+                foreach(Order o in tempList)
+                {
+                    if(c.CustomerKey == o.CustomerKey)
+                    {
+                        c.Orders.Add(o);
+                    }
+                }
+            }
+        }
 
 
     /// <summary>

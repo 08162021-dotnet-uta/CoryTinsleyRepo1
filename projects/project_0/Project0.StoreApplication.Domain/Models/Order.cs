@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Abstracts;
 
@@ -8,22 +9,31 @@ namespace Project0.StoreApplication.Domain.Models
 
   public class Order
   {
+    //public Store StoreID { get; set; }
+    public short OrderID { get; set; }
+    public byte StoreKey { get; set; }
+    //public Customer CustomerID { get; set; }
+    public byte CustomerKey { get; set; }
+    //public List<Product> Products { get; set; }
+    public DateTime OrderDate { get; set; }
 
-    public Store MyStore { get; set; }
-    public Customer MyCustomer { get; set; }
-    public List<Product> Products { get; set; }
 
     public Order()
     {
-
+        
     }
 
-    public Order(List<Product> products, Store store, Customer customer)
+    public Order( byte CKey, byte SKey)
     {
 
-      MyCustomer = customer;
-      MyStore = store;
-      Products = products;
+      //CustomerID = customer;
+      //StoreID = store;
+      //Products = products;
+
+      OrderDate = DateTime.Now;
+      StoreKey = SKey;
+      CustomerKey = CKey;
+
 
     }
 

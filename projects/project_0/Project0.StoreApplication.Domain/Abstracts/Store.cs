@@ -11,9 +11,11 @@ namespace Project0.StoreApplication.Domain.Abstracts
   public abstract class Store
   {
     public string Name { get; set; }
-    public int StoreID { get; set; }
+    public byte StoreID { get; set; }
+        public byte StoreKey { get; set; }
+        public byte Active { get; set; }
 
-    public List<Order> Orders { get; set; }
+        public List<Order> Orders { get; set; }
     public List<Product> Products { get; set; }
 
     public Store()

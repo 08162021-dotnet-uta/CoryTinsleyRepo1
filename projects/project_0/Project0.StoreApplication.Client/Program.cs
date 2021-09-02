@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Abstracts;
-using Project0.StoreApplication.Storage.Repositories;
 using Project0.StoreApplication.Client.Singletons;
 using Project0.StoreApplication.Domain.Models;
 using Serilog;
@@ -23,6 +22,7 @@ namespace Project0.StoreApplication.Client
 
 
     private const string _logFilePath = @"/home/clypto/revature/training_code/projects/data/logs.txt";
+        private static bool running = true;
 
     private static void Main(string[] args)
     {
@@ -33,40 +33,90 @@ namespace Project0.StoreApplication.Client
 
 
 
-
+        /// <summary>
+        /// Program Flow
+        /// </summary>
     private static void Run()
     {
+            do
+            {
 
-      //saves customer the user selects 
-      var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
-      Console.WriteLine("You selected: " + customer);
+                //saves customer the user selects 
+                var customer = SelectCustomer();
 
-      //saves store the user selects
-      var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
+                //saves store the user selects
+                var store = SelectStore();
+
+                //Shows product list and saves selected product
+                SelectProduct(store, customer);
+
+               
+                
+                Console.WriteLine("Do you wish to exit the application?");
+                var option = CaptureOutput<string>(confirmationList);
+                if(option == 1)
+                {       
+                    running = false;
+                }
+
+                
+                
 
 
-      var products = _productSingleton.SortProducts(store);
-      var selectedProduct = CaptureOutput<Product>(products) - 1;
+                //Select order
+            } while (running == true);
 
-      Console.WriteLine($"Do you want to buy {products[selectedProduct]}");
-      var choice = CaptureOutput<string>(confirmationList);
 
-      if (choice == 1)
-        _orderSingleton.CreateOrder(new List<Product>() { products[selectedProduct] }, store, customer);
 
-      Console.WriteLine(customer);
 
-      
+       /// Console.WriteLine(customer);
 
     }
 
+        public static void LandingPage()
+        {
+            Console.WriteLine($"Welcome to 'Insert Generic Site Name Here' where your money is always appreciated!");
+        }
+
+    public static Customer SelectCustomer()
+        {
+           
+            var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
+             Log.Information($"SelectCustomer {customer}");     
+            return customer;
+
+        }
+
+     public static Store SelectStore()
+        {
+             var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
+            Console.WriteLine("You selected: " + store);
+            Log.Information($"SelectStore {store}");
+            return store;
+        }
 
 
-    /// <summary>
-    /// Print list to console
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    static void ConsoleOutput<T>(List<T> data) where T : class
+        public static void SelectProduct(Store store, Customer customer)
+        {
+            var products = _productSingleton.SortProducts(store);
+            var selectedProduct = CaptureOutput<Product>(products) - 1;
+            Log.Information($"SelectProduct {selectedProduct}");
+
+            Console.WriteLine($"Do you want to buy {products[selectedProduct]}");
+                  var choice = CaptureOutput<string>(confirmationList);
+
+
+                 if (choice == 1)
+            _orderSingleton.CreateOrder(new List<Product>() { products[selectedProduct] }, store, customer);
+            Log.Information($"Created Order");
+        }
+
+
+        /// <summary>
+        /// Print list to console
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        static void ConsoleOutput<T>(List<T> data) where T : class
     {
       int i = 1;
       Log.Information($"ConsoleOutput<{typeof(T)}>");

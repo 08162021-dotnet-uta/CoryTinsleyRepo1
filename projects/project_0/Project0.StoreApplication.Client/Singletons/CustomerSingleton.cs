@@ -11,6 +11,7 @@ namespace Project0.StoreApplication.Client.Singletons
   {
     private static CustomerSingleton _customerSingleton;
     private static readonly CustomerRepository _customerRepository = new CustomerRepository();
+        private static readonly OrderSingleton _orderSingleton = OrderSingleton.Instance;
     /// <summary>
     /// List of Customer Objects
     /// </summary>
@@ -25,7 +26,7 @@ namespace Project0.StoreApplication.Client.Singletons
           _customerSingleton = new CustomerSingleton();
         }
 
-
+                
         return _customerSingleton;
       }
     }
@@ -35,6 +36,7 @@ namespace Project0.StoreApplication.Client.Singletons
     {
 
       Customers = _customerRepository.Select();
+      _orderSingleton.GrabOrders(Customers);
     }
 
     /// <summary>

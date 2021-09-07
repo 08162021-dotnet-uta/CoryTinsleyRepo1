@@ -21,7 +21,7 @@ namespace Project0.StoreApplication.Client
     private static List<string> confirmationList = new List<string>() { "Yes", "No" };
 
 
-    private const string _logFilePath = @"/home/clypto/revature/training_code/projects/data/logs.txt";
+    private const string _logFilePath = @"C:/Users/cwall/source/repos/08162021-dotnet-uta/CoryTinsleyRepo1/projects/data/logs.txt";
         private static bool running = true;
 
     private static void Main(string[] args)
@@ -38,33 +38,56 @@ namespace Project0.StoreApplication.Client
         /// </summary>
     private static void Run()
     {
-            do
-            {
+        var customer = new Customer();
+        bool newCustomer = LandingPage();
+        
 
-                //saves customer the user selects 
-                var customer = SelectCustomer();
+        if(newCustomer)
+        {
+           Console.WriteLine("What is your name?");
+           _customerSingleton.CreateCustomer(Console.ReadLine());
 
-                //saves store the user selects
-                var store = SelectStore();
+        }
+        else
+        {
+            //saves customer the user selects 
+            customer = SelectCustomer();
+        }
 
-                //Shows product list and saves selected product
-                SelectProduct(store, customer);
+
+
+
+            
+
+
+        do
+        {
+
+                
+
+
+
+           //saves store the user selects
+            var store = SelectStore();
+
+           //Shows product list and saves selected product
+           SelectProduct(store, customer);
 
                
                 
-                Console.WriteLine("Do you wish to exit the application?");
-                var option = CaptureOutput<string>(confirmationList);
-                if(option == 1)
-                {       
-                    running = false;
-                }
+           Console.WriteLine("Do you wish to exit the application?");
+           var option = CaptureOutput<string>(confirmationList);
+           if(option == 1)
+           {       
+               running = false;
+           }
 
                 
                 
 
 
-                //Select order
-            } while (running == true);
+        //Select order
+        } while (running == true);
 
 
 
@@ -73,10 +96,20 @@ namespace Project0.StoreApplication.Client
 
     }
 
-        public static void LandingPage()
+        public static bool LandingPage()
         {
             Console.WriteLine($"Welcome to 'Insert Generic Site Name Here' where your money is always appreciated!");
+            Console.WriteLine("Are You a New or Existing customer?");
+            var option = CaptureOutput<string>(new List<string> { "New", "Existing" });
+            if (option == 1)
+            {
+                return true;
+            }
+            return false;
         }
+
+
+
 
     public static Customer SelectCustomer()
         {

@@ -8,12 +8,15 @@ namespace Project0.StoreApplication.Storage.Repositories
 
   public class CustomerRepository : IRepository<Customer>
   {
-    private const string _path = @"/home/clypto/revature/training_code/projects/data/Customers.xml";
+    private const string _path = @"C:/Users/cwall/source/repos/08162021-dotnet-uta/CoryTinsleyRepo1/projects/data/Customers.xml";
 
     public List<Customer> Customers { get; set; }
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
+    private static readonly EF_Customers _ef_Customers = new EF_Customers();
 
-    public CustomerRepository()
+
+
+        public CustomerRepository()
     {
 
 
@@ -24,9 +27,9 @@ namespace Project0.StoreApplication.Storage.Repositories
       {
         _fileAdapter.WriteToFile<Customer>(_path, new List<Customer>()
         {
-          new Customer("Clypto", 1),
-          new Customer("Sam", 2),
-          new Customer("Ryan", 3)
+          //new Customer("Clypto"),
+          //new Customer("Sam"),
+          //new Customer("Ryan")
 
         });
       }
@@ -48,7 +51,8 @@ namespace Project0.StoreApplication.Storage.Repositories
     public bool Insert(Customer entry)
     {
       Customers.Add(entry);
-      _fileAdapter.WriteToFile<Customer>(_path, Customers);
+            //_fileAdapter.WriteToFile<Customer>(_path, Customers);
+            _ef_Customers.SetCustomer(entry);
 
       return true;
     }
@@ -56,7 +60,8 @@ namespace Project0.StoreApplication.Storage.Repositories
 
     public List<Customer> Select()
     {
-      return _fileAdapter.ReadFromFile<Customer>(_path);
+            //return _fileAdapter.ReadFromFile<Customer>(_path);
+            return _ef_Customers.GetCustomers();
     }
 
     public Customer Update(Customer entry)

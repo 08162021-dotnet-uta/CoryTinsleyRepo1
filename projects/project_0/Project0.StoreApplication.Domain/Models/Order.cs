@@ -13,7 +13,7 @@ namespace Project0.StoreApplication.Domain.Models
     public short OrderID { get; set; }
     public byte StoreKey { get; set; }
     //public Customer CustomerID { get; set; }
-    public byte CustomerKey { get; set; }
+    public byte CustomerID { get; set; }
     //public List<Product> Products { get; set; }
     public DateTime OrderDate { get; set; }
 
@@ -32,7 +32,7 @@ namespace Project0.StoreApplication.Domain.Models
 
       OrderDate = DateTime.Now;
       StoreKey = SKey;
-      CustomerKey = CKey;
+      CustomerID = CKey;
 
 
     }

@@ -11,12 +11,25 @@ namespace Project0.StoreApplication.Client.Singletons
   {
     private static CustomerSingleton _customerSingleton;
     private static readonly CustomerRepository _customerRepository = new CustomerRepository();
-        private static readonly OrderSingleton _orderSingleton = OrderSingleton.Instance;
+    private static readonly OrderSingleton _orderSingleton = OrderSingleton.Instance;
+
+
+
     /// <summary>
     /// List of Customer Objects
     /// </summary>
     /// <value></value>
     public List<Customer> Customers { get; private set; }
+    /// <summary>
+    /// Dictionary used to hold store identifier
+    /// </summary>
+    public Dictionary<Customer, int> customerDictionary = new Dictionary<Customer, int>();
+
+    public int currentCustomer = 0;
+
+
+
+
     public static CustomerSingleton Instance
     {
       get
@@ -36,8 +49,16 @@ namespace Project0.StoreApplication.Client.Singletons
     {
 
       Customers = _customerRepository.Select();
-      _orderSingleton.GrabOrders(Customers);
+      
     }
+
+    private byte customerCount = 0;
+    public void CreateCustomer(string Name)
+    {
+       _customerRepository.Insert(new Customer(Name));
+    }
+       //_orderSingleton.GrabOrders(Customers);
+    
 
     /// <summary>
     /// Add customer object to XML

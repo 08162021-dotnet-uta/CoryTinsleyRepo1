@@ -1,0 +1,1 @@
+Delete from [Order].[Order]

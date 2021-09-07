@@ -14,13 +14,12 @@ namespace Project0.StoreApplication.Storage.Repositories
 
         public List<Order> GetOrders()
         {
-            Order order = _da.Orders.First();
             return _da.Orders.FromSqlRaw("Select * from [Order].[Order];").ToList();
         }
 
         public void SetOrder(Order order)
         {
-            _da.Database.ExecuteSqlRaw("insert into [Order].[Order](CustomerKey, StoreKey, OrderDate) values ({0}, {1}, {2})", order.CustomerKey, order.StoreKey, order.OrderDate);
+            _da.Database.ExecuteSqlRaw("insert into [Order].[Order](CustomerID, StoreKey, OrderDate) values ({0}, {1}, {2})", order.CustomerID, order.StoreKey, order.OrderDate);
         }
     }
 }

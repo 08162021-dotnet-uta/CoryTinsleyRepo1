@@ -41,12 +41,18 @@ namespace Project0.StoreApplication.Storage.Repositories
       return true;
     }
 
-
+    /// <summary>
+    /// Get all Order records from DB
+    /// </summary>
+    /// <returns></returns>
     public List<Order> Select()
     {
         List<Order> tempOrder = _ef_Orders.GetOrders();
-            Console.WriteLine(tempOrder.Count);
+           // Console.WriteLine(tempOrder.Count);
             return tempOrder;
+
+
+
       //return _fileAdapter.ReadFromFile<Order>(_path);
       
         }

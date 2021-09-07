@@ -15,6 +15,8 @@ namespace Project0.StoreApplication.Client.Singletons
 
     private static readonly ProductSingleton _productSingleton = ProductSingleton.Instance;
 
+
+    public Dictionary<Store, int> storeDictionary = new Dictionary<Store, int>();
     public List<Store> Stores { get; set; }
 
     public List<Product> Products { get; set; }

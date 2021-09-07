@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCustomer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Customer>
+    <Name>Clypto</Name>
+    <CustomerKey>1</CustomerKey>
+  </Customer>
+  <Customer>
+    <Name>Sam</Name>
+    <CustomerKey>2</CustomerKey>
+  </Customer>
+  <Customer>
+    <Name>Ryan</Name>
+    <CustomerKey>3</CustomerKey>
+  </Customer>
+</ArrayOfCustomer>

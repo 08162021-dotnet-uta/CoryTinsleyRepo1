@@ -9,6 +9,10 @@ namespace Project0.StoreApplication.Storage.Models
     {
         public Customer()
         {
+
+        }
+        public Customer(string name)
+        {
             Orders = new HashSet<Order>();
         }
 

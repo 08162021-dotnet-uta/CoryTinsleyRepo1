@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Models;
+using Project0.StoreApplication.Storage.Models;
 using Project0.StoreApplication.Storage.Repositories;
 
 namespace Project0.StoreApplication.Client.Singletons
@@ -48,14 +49,14 @@ namespace Project0.StoreApplication.Client.Singletons
     private CustomerSingleton()
     {
 
-      Customers = _customerRepository.Select();
+      //Customers = _customerRepository.Select();
       
     }
 
     private byte customerCount = 0;
     public void CreateCustomer(string Name)
     {
-       _customerRepository.Insert(new Customer_D(Name));
+       _customerRepository.Insert(new Customer(Name));
     }
        //
        //_orderSingleton.GrabOrders(Customers);
@@ -65,16 +66,16 @@ namespace Project0.StoreApplication.Client.Singletons
     /// Add customer object to XML
     /// </summary>
     /// <param name="customer"></param>
-    public void Add(Customer_D customer)
+    public void Add(Customer customer)
     {
       _customerRepository.Insert(customer);
-      Customers = _customerRepository.Select();
+      //Customers = _customerRepository.Select();
 
     }
 
-    public void UpdateCustomer(Customer_D customer)
+    public void UpdateCustomer(Customer customer)
     {
-      _customerRepository.Update(customer);
+      //_customerRepository.Update(customer);
     }
   }
 }

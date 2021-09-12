@@ -6,6 +6,7 @@ using Project0.StoreApplication.Domain.Models;
 using Serilog;
 using Project0.StoreApplication.Storage.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Project0.StoreApplication.Client
 {
@@ -30,12 +31,12 @@ namespace Project0.StoreApplication.Client
     {
       Log.Logger = new LoggerConfiguration().WriteTo.File(_logFilePath).CreateLogger();
 
-      using(StoreApplicationDBContext context = new StoreApplicationDBContext())
-      {
-          List<Customer> cuatomers = context.Customers.FromSqlRaw("SELECT * FROM Customers").ToList();
-      }
+      //using(StoreApplicationDBContext context = new StoreApplicationDBContext())
+      //{
+      //    List<Customer> cuatomers = context.Customers.FromSqlRaw("SELECT * FROM Customers").ToList();
+      //}
 
-      Run();
+      //Run();
     }
 
 
@@ -58,7 +59,7 @@ namespace Project0.StoreApplication.Client
         else
         {
             //saves customer the user selects 
-            customer = SelectCustomer();
+           // customer = SelectCustomer();
         }
 
 
@@ -75,10 +76,10 @@ namespace Project0.StoreApplication.Client
 
 
            //saves store the user selects
-            var store = SelectStore();
+            //var store = SelectStore();
 
            //Shows product list and saves selected product
-           SelectProduct(store, customer);
+          // SelectProduct(store, customer);
 
                
                 
@@ -118,38 +119,38 @@ namespace Project0.StoreApplication.Client
 
 
 
-    public static Customer SelectCustomer()
-        {
+    //public static Customer SelectCustomer()
+    //    {
            
-            var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
-             Log.Information($"SelectCustomer {customer}");     
-            return customer;
+    //        //var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
+    //        // Log.Information($"SelectCustomer {customer}");     
+    //        //return customer;
 
-        }
+    //    }
 
-     public static Store SelectStore()
+     public static void /*Store*/ SelectStore()
         {
-             var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
-            Console.WriteLine("You selected: " + store);
-            Log.Information($"SelectStore {store}");
-            return store;
+            // var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
+            //Console.WriteLine("You selected: " + store);
+            //Log.Information($"SelectStore {store}");
+            return ;
         }
 
 
-        public static void SelectProduct(Store store, Customer customer)
-        {
-            var products = _productSingleton.SortProducts(store);
-            var selectedProduct = CaptureOutput<Product>(products) - 1;
-            Log.Information($"SelectProduct {selectedProduct}");
+        //public static void SelectProduct(Store store, Customer customer)
+        //{
+        //    var products = _productSingleton.SortProducts(store);
+        //    var selectedProduct = CaptureOutput<Product>(products) - 1;
+        //    Log.Information($"SelectProduct {selectedProduct}");
 
-            Console.WriteLine($"Do you want to buy {products[selectedProduct]}");
-                  var choice = CaptureOutput<string>(confirmationList);
+        //    Console.WriteLine($"Do you want to buy {products[selectedProduct]}");
+        //          var choice = CaptureOutput<string>(confirmationList);
 
 
-                 if (choice == 1)
-            _orderSingleton.CreateOrder(new List<Product>() { products[selectedProduct] }, store, customer);
-            Log.Information($"Created Order");
-        }
+        //         if (choice == 1)
+        //    _orderSingleton.CreateOrder(new List<Product>() { products[selectedProduct] }, store, customer);
+        //    Log.Information($"Created Order");
+        //}
 
 
         /// <summary>

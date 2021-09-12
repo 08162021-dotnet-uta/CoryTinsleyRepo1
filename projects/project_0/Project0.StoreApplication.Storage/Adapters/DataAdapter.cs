@@ -8,8 +8,8 @@ namespace Project0.StoreApplication.Storage.Adapters
   public class DataAdapter : DbContext
   {
 
-    public DbSet<Customer> Customers { get; set; }
-    public DbSet<Order> Orders { get; set; }
+    public DbSet<Customer_D> Customers { get; set; }
+    public DbSet<Order_D> Orders { get; set; }
    // public DbSet<Product> Products { get; set; }
     //public DbSet<Store> Stores { get; set; }
 

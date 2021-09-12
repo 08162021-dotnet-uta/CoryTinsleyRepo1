@@ -7,7 +7,7 @@ using Project0.StoreApplication.Domain.Abstracts;
 namespace Project0.StoreApplication.Domain.Models
 {
 
-  public class Order
+  public class Order_D
   {
     //public Store StoreID { get; set; }
     public short OrderID { get; set; }
@@ -18,12 +18,12 @@ namespace Project0.StoreApplication.Domain.Models
     public DateTime OrderDate { get; set; }
 
 
-    public Order()
+    public Order_D()
     {
         
     }
 
-    public Order( byte CKey, byte SKey)
+    public Order_D( byte CKey, byte SKey)
     {
 
       //CustomerID = customer;

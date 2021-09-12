@@ -16,10 +16,10 @@ namespace Project0.StoreApplication.Client.Singletons
     private static readonly ProductSingleton _productSingleton = ProductSingleton.Instance;
 
 
-    public Dictionary<Store, int> storeDictionary = new Dictionary<Store, int>();
-    public List<Store> Stores { get; set; }
+    public Dictionary<Store_D, int> storeDictionary = new Dictionary<Store_D, int>();
+    public List<Store_D> Stores { get; set; }
 
-    public List<Product> Products { get; set; }
+    public List<Product_D> Products { get; set; }
 
     public static StoreSingleton Instance
     {
@@ -39,13 +39,13 @@ namespace Project0.StoreApplication.Client.Singletons
       Stores = _storeRepository.Select();
     }
 
-    public void Add(Store Store)
+    public void Add(Store_D Store)
     {
       _storeRepository.Insert(Store);
       Stores = _storeRepository.Select();
     }
 
-    public void AddProducts(Product Product)
+    public void AddProducts(Product_D Product)
     {
 
     }

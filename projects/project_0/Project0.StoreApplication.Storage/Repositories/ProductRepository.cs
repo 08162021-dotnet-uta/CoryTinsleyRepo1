@@ -9,26 +9,26 @@ namespace Project0.StoreApplication.Storage.Repositories
   /// <summary>
   /// 
   /// </summary>
-  public class ProductRepository : IRepository<Product>
+  public class ProductRepository : IRepository<Product_D>
   {
     private const string _path = @"/home/clypto/revature/training_code/projects/data/products.xml";
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
 
     public ProductRepository()
     {
-      if (_fileAdapter.ReadFromFile<Product>(_path) == null)
+      if (_fileAdapter.ReadFromFile<Product_D>(_path) == null)
       {
-        _fileAdapter.WriteToFile<Product>(_path, new List<Product>()
+        _fileAdapter.WriteToFile<Product_D>(_path, new List<Product_D>()
         {
-          new Product("Generic CPU", 59.99m, 1),
-          new Product("Generic GPU", 100.00m, 1),
-          new Product("Super Fancy Case", 1000.00m, 1),
+          new Product_D("Generic CPU", 59.99m, 1),
+          new Product_D("Generic GPU", 100.00m, 1),
+          new Product_D("Super Fancy Case", 1000.00m, 1),
 
-          new Product("Pack of Ballpoint Pens", 5.00m, 2),
-          new Product("One of those fancy pens that you dip in ink", 5000.00m, 2),
+          new Product_D("Pack of Ballpoint Pens", 5.00m, 2),
+          new Product_D("One of those fancy pens that you dip in ink", 5000.00m, 2),
 
-          new Product("CD that catches on fire if you use it", 5.55m, 3),
-          new Product("Broken pair of branded headphones", 150.00m, 3)
+          new Product_D("CD that catches on fire if you use it", 5.55m, 3),
+          new Product_D("Broken pair of branded headphones", 150.00m, 3)
 
 
         });
@@ -37,26 +37,26 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
-    public bool Delete(Product entry)
+    public bool Delete(Product_D entry)
     {
       throw new System.NotImplementedException();
     }
 
-    public bool Insert(Product entry)
+    public bool Insert(Product_D entry)
     {
-      _fileAdapter.WriteToFile<Product>(_path, new List<Product> { entry });
+      _fileAdapter.WriteToFile<Product_D>(_path, new List<Product_D> { entry });
 
       return true;
     }
 
 
-    public List<Product> Select()
+    public List<Product_D> Select()
     {
-      return _fileAdapter.ReadFromFile<Product>(_path);
+      return _fileAdapter.ReadFromFile<Product_D>(_path);
     }
 
 
-    public Product Update(Product entry)
+    public Product_D Update(Product_D entry)
     {
       throw new System.NotImplementedException();
     }

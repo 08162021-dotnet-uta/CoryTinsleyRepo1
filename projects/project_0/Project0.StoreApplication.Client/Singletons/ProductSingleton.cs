@@ -13,7 +13,7 @@ namespace Project0.StoreApplication.Client.Singletons
     private static readonly ProductRepository _productRepository = new ProductRepository();
     private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
 
-    public List<Product> Products { get; set; }
+    public List<Product_D> Products { get; set; }
 
     public static ProductSingleton Instance
     {
@@ -40,11 +40,11 @@ namespace Project0.StoreApplication.Client.Singletons
     /// </summary>
     /// <param name="stores"></param>
     /// <returns></returns>
-    public List<Product> SortProducts(Store store)
+    public List<Product_D> SortProducts(Store_D store)
     {
-      List<Product> localProduct = new List<Product>();
+      List<Product_D> localProduct = new List<Product_D>();
 
-      foreach (Product p in Products)
+      foreach (Product_D p in Products)
       {
         if (p.StoreID == store.StoreID)
           localProduct.Add(p);
@@ -59,7 +59,7 @@ namespace Project0.StoreApplication.Client.Singletons
     /// Adds new product to repository
     /// </summary>
     /// <param name="product"></param>
-    public void Add(Product product)
+    public void Add(Product_D product)
     {
 
       _productRepository.Insert(product);

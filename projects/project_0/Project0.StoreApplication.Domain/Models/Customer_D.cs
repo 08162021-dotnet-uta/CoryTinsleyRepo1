@@ -3,19 +3,19 @@ using System.Collections.Generic;
 namespace Project0.StoreApplication.Domain.Models
 {
 
-  public class Customer
+  public class Customer_D
   {
     public string Name { get; set; }
     public byte CustomerID { get; set; }
 
-    public List<Order> Orders { get; set; }
+    //public List<Order_D> Orders { get; set; }
 
 
-    public Customer()
+    public Customer_D()
     {
 
     }
-    public Customer(string name)
+    public Customer_D(string name)
     {
       Name = name;
     }

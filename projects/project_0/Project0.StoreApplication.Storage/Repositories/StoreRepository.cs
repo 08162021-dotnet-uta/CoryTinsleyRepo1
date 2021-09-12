@@ -9,7 +9,7 @@ namespace Project0.StoreApplication.Storage.Repositories
   /// <summary>
   /// 
   /// </summary>
-  public class StoreRepository : IRepository<Store>
+  public class StoreRepository : IRepository<Store_D>
   {
     private const string _path = @"/home/clypto/revature/training_code/projects/data/stores.xml";
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
@@ -17,9 +17,9 @@ namespace Project0.StoreApplication.Storage.Repositories
 
     private StoreRepository()
     {
-      if (_fileAdapter.ReadFromFile<Store>(_path) == null)
+      if (_fileAdapter.ReadFromFile<Store_D>(_path) == null)
       {
-        _fileAdapter.WriteToFile<Store>(_path, new List<Store>()
+        _fileAdapter.WriteToFile<Store_D>(_path, new List<Store_D>()
         {
           new ComputerStore(),
           new PenStore(),
@@ -44,27 +44,27 @@ namespace Project0.StoreApplication.Storage.Repositories
     }
 
 
-    public bool Delete(Store entry)
+    public bool Delete(Store_D entry)
     {
       throw new System.NotImplementedException();
     }
 
 
-    public bool Insert(Store entry)
+    public bool Insert(Store_D entry)
     {
-      _fileAdapter.WriteToFile<Store>(_path, new List<Store> { entry });
+      _fileAdapter.WriteToFile<Store_D>(_path, new List<Store_D> { entry });
 
       return true;
     }
 
 
-    public List<Store> Select()
+    public List<Store_D> Select()
     {
-      return _fileAdapter.ReadFromFile<Store>(_path);
+      return _fileAdapter.ReadFromFile<Store_D>(_path);
     }
 
 
-    public Store Update(Store entry)
+    public Store_D Update(Store_D entry)
     {
       throw new System.NotImplementedException();
     }

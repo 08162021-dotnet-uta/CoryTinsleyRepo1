@@ -8,17 +8,14 @@ namespace Project0.StoreApplication.Domain.Abstracts
   [XmlInclude(typeof(ComputerStore))]
   [XmlInclude(typeof(MusicStore))]
   [XmlInclude(typeof(PenStore))]
-  public abstract class Store
+  public abstract class Store_D
   {
-    public string Name { get; set; }
     public byte StoreID { get; set; }
-        public byte StoreKey { get; set; }
-        public byte Active { get; set; }
+    public string Name { get; set; }
+    public List<Order_D> Orders { get; set; }
+    public List<Product_D> Products { get; set; }
 
-        public List<Order> Orders { get; set; }
-    public List<Product> Products { get; set; }
-
-    public Store()
+    public Store_D()
     {
 
     }

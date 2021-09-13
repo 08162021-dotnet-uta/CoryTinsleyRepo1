@@ -122,3 +122,9 @@
 2021-09-07 00:09:55.969 -04:00 [INF] ConsoleOutput<Project0.StoreApplication.Domain.Models.Product>
 2021-09-07 00:10:00.676 -04:00 [INF] SelectProduct 0
 2021-09-07 00:10:00.677 -04:00 [INF] ConsoleOutput<System.String>
+2021-09-07 17:38:33.568 -04:00 [INF] ConsoleOutput<System.String>
+2021-09-07 17:38:40.047 -04:00 [INF] ConsoleOutput<Project0.StoreApplication.Domain.Abstracts.Store>
+2021-09-07 17:38:40.047 -04:00 [INF] SelectStore Computer Store
+2021-09-07 17:38:40.048 -04:00 [INF] ConsoleOutput<Project0.StoreApplication.Domain.Models.Product>
+2021-09-07 17:38:40.048 -04:00 [INF] SelectProduct 0
+2021-09-07 17:38:40.048 -04:00 [INF] ConsoleOutput<System.String>

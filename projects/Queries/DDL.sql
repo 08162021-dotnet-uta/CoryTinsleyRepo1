@@ -23,13 +23,28 @@ CREATE TABLE Store
 
 CREATE TABLE Product
 (
-	ProductID TINYINT NOT NULL IDENTITY PRIMARY KEY,
-	Name NVARCHAR(100) NOT NULL
+	ProductID SMALLINT NOT NULL IDENTITY PRIMARY KEY,
+	Name NVARCHAR(100) NOT NULL,
+	Price MONEY NOT NULL,
+	StoreID TINYINT NOT NULL
 );
 
 CREATE TABLE OrderProduct
 (
+	OrderProductID SMALLINT NOT NULL IDENTITY PRIMARY KEY,
 	OrderID SMALLINT NOT NULL,
 	ProductID SMALLINT NOT NULL,
-	CONSTRAINT PK_TempOrder
+	CONSTRAINT PK_Order FOREIGN KEY (OrderID)
+	REFERENCES [Order].[Order] (OrderID),
+	CONSTRAINT PK_Order_Product FOREIGN KEY (ProductID)
+	REFERENCES dbo.Product (ProductID),
 );
+
+ALTER TABLE [Order].[Order]
+	add constraint FK_Order_Customer foreign key (CustomerID) references Customer(CustomerID);
+
+ALTER TABLE [Order].[Order]
+	add constraint FK_Order_Store foreign key (StoreID) references Store(StoreID);
+
+ALTER TABLE Product
+	add constraint FK_Product_Store foreign key (StoreID) references Store(StoreID);

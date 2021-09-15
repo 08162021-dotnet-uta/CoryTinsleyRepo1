@@ -19,25 +19,25 @@ namespace Project0.StoreApplication.Storage.Repositories
 
 
 
-        public CustomerRepository()
+    public CustomerRepository()
     {
 
 
 
 
 
-          if (_fileAdapter.ReadFromFile<Customer_D>(_path) == null)
-          {
-            _fileAdapter.WriteToFile<Customer_D>(_path, new List<Customer_D>()
-            {
-              //new Customer("Clypto"),
-              //new Customer("Sam"),
-              //new Customer("Ryan")
+          //if (_fileAdapter.ReadFromFile<Customer_D>(_path) == null)
+          //{
+          //  _fileAdapter.WriteToFile<Customer_D>(_path, new List<Customer_D>()
+          //  {
+          //    //new Customer("Clypto"),
+          //    //new Customer("Sam"),
+          //    //new Customer("Ryan")
 
-            });
-          }
+          //  });
+          //}
 
-            //Customers = Select();
+          //  //Customers = Select();
 
 
     }

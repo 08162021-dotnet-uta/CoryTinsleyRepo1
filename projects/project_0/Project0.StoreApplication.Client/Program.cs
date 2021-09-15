@@ -33,7 +33,7 @@ namespace Project0.StoreApplication.Client
 
       //using(StoreApplicationDBContext context = new StoreApplicationDBContext())
       //{
-      //    List<Customer> cuatomers = context.Customers.FromSqlRaw("SELECT * FROM Customers").ToList();
+      //    List<Customer> customers = context.Customers.FromSqlRaw("SELECT * FROM Customers").ToList();
       //}
 
       //Run();

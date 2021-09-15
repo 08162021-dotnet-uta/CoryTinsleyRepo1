@@ -16,6 +16,7 @@ namespace Project0.StoreApplication.Domain.Models
     public byte CustomerID { get; set; }
     //public List<Product> Products { get; set; }
     public DateTime OrderDate { get; set; }
+    public int Quantity { get; set; }
 
 
     public Order_D()
@@ -37,6 +38,6 @@ namespace Project0.StoreApplication.Domain.Models
 
     }
 
-  }
+  }//EOC
 
-}
+}//EON

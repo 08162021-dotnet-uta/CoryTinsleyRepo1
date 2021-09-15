@@ -21,9 +21,9 @@ namespace Project0.StoreApplication.Storage.Repositories
       {
         _fileAdapter.WriteToFile<Store_D>(_path, new List<Store_D>()
         {
-          new ComputerStore(),
-          new PenStore(),
-          new MusicStore()
+          //new ComputerStore(),
+          //new PenStore(),
+          //new MusicStore()
         });
       }
     }

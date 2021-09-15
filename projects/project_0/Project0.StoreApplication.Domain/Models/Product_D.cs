@@ -5,10 +5,11 @@ namespace Project0.StoreApplication.Domain.Models
 
   public class Product_D
   {
-    public byte ProductKey { get; set; }
+    public short ProductKey { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
     public int StoreID { get; set; }
+    public int Quantity { get; set; }
 
     public Product_D()
     {
@@ -26,5 +27,5 @@ namespace Project0.StoreApplication.Domain.Models
     {
       return Name;
     }
-  }
-}
+  }//EOC
+}//EON

@@ -8,7 +8,16 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+  jobs: 
+  - task: SonarCloudPrepare@1
+    inputs:
+      SonarCloud: 'SonarCloud-stuff'
+      organization: 'corytinsleyrevature'
+      scannerMode: 'MSBuild'
+      projectKey: 'CoryTinsleyRevature_StoreApplication'
+      projectName: 'StoreApplication'
+  - task: SonarCloudAnalyze@1
+  
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'

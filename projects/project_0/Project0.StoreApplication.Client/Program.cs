@@ -4,105 +4,104 @@ using Project0.StoreApplication.Domain.Abstracts;
 using Project0.StoreApplication.Client.Singletons;
 using Project0.StoreApplication.Domain.Models;
 using Serilog;
-using Project0.StoreApplication.Storage.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Project0.StoreApplication.Client
 {
 
-  /// <summary>
-  /// Defines the Program Class
-  /// </summary>
-  class Program
-  {
+    /// <summary>
+    /// Defines the Program Class
+    /// </summary>
+    class Program
+    {
 
-    private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
-    private static readonly CustomerSingleton _customerSingleton = CustomerSingleton.Instance;
-    private static readonly ProductSingleton _productSingleton = ProductSingleton.Instance;
-    private static readonly OrderSingleton _orderSingleton = OrderSingleton.Instance;
-    private static List<string> confirmationList = new List<string>() { "Yes", "No" };
+        private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
+       // private static readonly CustomerSingleton _customerSingleton = CustomerSingleton.Instance;
+        private static readonly ProductSingleton _productSingleton = ProductSingleton.Instance;
+        private static readonly OrderSingleton _orderSingleton = OrderSingleton.Instance;
+        private static List<string> confirmationList = new List<string>() { "Yes", "No" };
 
 
-    private const string _logFilePath = @"C:/Users/cwall/source/repos/08162021-dotnet-uta/CoryTinsleyRepo1/projects/data/logs.txt";
+        private const string _logFilePath = @"C:/Users/cwall/source/repos/08162021-dotnet-uta/CoryTinsleyRepo1/projects/data/logs.txt";
         private static bool running = true;
 
-    private static void Main(string[] args)
-    {
-      Log.Logger = new LoggerConfiguration().WriteTo.File(_logFilePath).CreateLogger();
+        private static void Main(string[] args)
+        {
+            Log.Logger = new LoggerConfiguration().WriteTo.File(_logFilePath).CreateLogger();
 
-      //using(StoreApplicationDBContext context = new StoreApplicationDBContext())
-      //{
-      //    List<Customer> customers = context.Customers.FromSqlRaw("SELECT * FROM Customers").ToList();
-      //}
+            //using(StoreApplicationDBContext context = new StoreApplicationDBContext())
+            //{
+            //    List<Customer> customers = context.Customers.FromSqlRaw("SELECT * FROM Customers").ToList();
+            //}
 
-      //Run();
-    }
+            //Run();
+        }
 
 
 
         /// <summary>
         /// Program Flow
         /// </summary>
-    private static void Run()
-    {
-        var customer = new Customer();
-        bool newCustomer = LandingPage();
-        
-
-        if(newCustomer)
+        private static void Run()
         {
-           Console.WriteLine("What is your name?");
-           _customerSingleton.CreateCustomer(Console.ReadLine());
+           // var customer = new Customer();
+            bool newCustomer = LandingPage();
+
+
+            if (newCustomer)
+            {
+                Console.WriteLine("What is your name?");
+                //_customerSingleton.CreateCustomer(Console.ReadLine());
+
+            }
+            else
+            {
+                //saves customer the user selects 
+                // customer = SelectCustomer();
+            }
+
+
+
+
+
+
+
+            do
+            {
+
+
+
+
+
+                //saves store the user selects
+                //var store = SelectStore();
+
+                //Shows product list and saves selected product
+                // SelectProduct(store, customer);
+
+
+
+                Console.WriteLine("Do you wish to exit the application?");
+                var option = CaptureOutput<string>(confirmationList);
+                if (option == 1)
+                {
+                    running = false;
+                }
+
+
+
+
+
+                //Select order
+            } while (running == true);
+
+
+
+
+            /// Console.WriteLine(customer);
 
         }
-        else
-        {
-            //saves customer the user selects 
-           // customer = SelectCustomer();
-        }
-
-
-
-
-            
-
-
-        do
-        {
-
-                
-
-
-
-           //saves store the user selects
-            //var store = SelectStore();
-
-           //Shows product list and saves selected product
-          // SelectProduct(store, customer);
-
-               
-                
-           Console.WriteLine("Do you wish to exit the application?");
-           var option = CaptureOutput<string>(confirmationList);
-           if(option == 1)
-           {       
-               running = false;
-           }
-
-                
-                
-
-
-        //Select order
-        } while (running == true);
-
-
-
-
-       /// Console.WriteLine(customer);
-
-    }
 
         public static bool LandingPage()
         {
@@ -119,21 +118,21 @@ namespace Project0.StoreApplication.Client
 
 
 
-    //public static Customer SelectCustomer()
-    //    {
-           
-    //        //var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
-    //        // Log.Information($"SelectCustomer {customer}");     
-    //        //return customer;
+        //public static Customer SelectCustomer()
+        //    {
 
-    //    }
+        //        //var customer = _customerSingleton.Customers[CaptureOutput<Customer>(_customerSingleton.Customers) - 1];
+        //        // Log.Information($"SelectCustomer {customer}");     
+        //        //return customer;
 
-     public static void /*Store*/ SelectStore()
+        //    }
+
+        public static void /*Store*/ SelectStore()
         {
             // var store = _storeSingleton.Stores[CaptureOutput<Store>(_storeSingleton.Stores) - 1];
             //Console.WriteLine("You selected: " + store);
             //Log.Information($"SelectStore {store}");
-            return ;
+            return;
         }
 
 
@@ -158,35 +157,35 @@ namespace Project0.StoreApplication.Client
         /// </summary>
         /// <typeparam name="T"></typeparam>
         static void ConsoleOutput<T>(List<T> data) where T : class
-    {
-      int i = 1;
-      Log.Information($"ConsoleOutput<{typeof(T)}>");
+        {
+            int i = 1;
+            Log.Information($"ConsoleOutput<{typeof(T)}>");
 
-      foreach (var item in data)
-      {
-        System.Console.WriteLine($"{i++} - {item}");
-        //i += 1;
-      }
+            foreach (var item in data)
+            {
+                System.Console.WriteLine($"{i++} - {item}");
+                //i += 1;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Capture User input
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        static private int CaptureOutput<T>(List<T> data) where T : class
+        {
+
+            ConsoleOutput<T>(data);
+
+            Console.WriteLine($"Select {typeof(T).Name}: ");
+
+            int selected = int.Parse(Console.ReadLine());
+
+
+
+            return selected;
+        }
     }
-
-
-
-    /// <summary>
-    /// Capture User input
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    static private int CaptureOutput<T>(List<T> data) where T : class
-    {
-
-      ConsoleOutput<T>(data);
-
-      Console.WriteLine($"Select {typeof(T).Name}: ");
-
-      int selected = int.Parse(Console.ReadLine());
-
-
-
-      return selected;
-    }
-  }
 }

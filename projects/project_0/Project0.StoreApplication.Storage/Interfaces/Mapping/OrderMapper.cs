@@ -14,7 +14,7 @@ namespace Project0.StoreApplication.Storage.Models.Mapping
             c.StoreKey = entry.StoreId;
             c.OrderDate = entry.OrderDate;
             c.CustomerID = entry.CustomerId;
-            
+
             return c;
         }
 

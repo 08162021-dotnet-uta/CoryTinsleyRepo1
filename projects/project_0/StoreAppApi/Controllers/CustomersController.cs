@@ -5,15 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Models;
+using Project0.StoreApplication.Storage.Repositories;
 
 namespace StoreAppApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
         private readonly StoreApplicationDBContext _context;
+        private readonly CustomerRepository _customerRepository = new CustomerRepository();
 
         public CustomersController(StoreApplicationDBContext context)
         {
@@ -107,5 +110,16 @@ namespace StoreAppApi.Controllers
         {
             return _context.Customers.Any(e => e.CustomerId == id);
         }
-    }
-}
+
+        [HttpGet("onLogin/{fname}")]
+        public async Task<ActionResult<Customer_D>> onLogin(string fname)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            Customer_D cust = new Customer_D() { Name = fname };
+            Customer_D c1 = await _customerRepository.LoginCustomerAsync(cust);
+            return c1;
+
+        }
+    }//EOC
+}//EON

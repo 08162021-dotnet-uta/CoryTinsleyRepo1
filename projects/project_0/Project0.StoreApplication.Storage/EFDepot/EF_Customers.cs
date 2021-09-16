@@ -10,10 +10,10 @@ namespace Project0.StoreApplication.Storage.EFDepot
         private readonly StoreApplicationDBContext saDBContext = new StoreApplicationDBContext();
 
 
-public List<Customer> GetCustomers()
-        {
-            return saDBContext.Customers.FromSqlRaw("Select * from Customer;").ToList();
-        }
+        //public List<Customer> GetCustomers()
+        //        {
+        //            return saDBContext.Customers.FromSqlRaw("Select * from Customer;").ToList();
+        //        }
 
         public void SetCustomer(Customer customer)
         {

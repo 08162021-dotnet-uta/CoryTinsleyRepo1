@@ -16,7 +16,7 @@ namespace Project0.StoreApplication.Storage.Repositories
         private const string _path = @"C:/Users/cwall/source/repos/08162021-dotnet-uta/CoryTinsleyRepo1/projects/data/Customers.xml";
 
         public List<Customer_D> Customers { get; set; }
-        private static readonly FileAdapter _fileAdapter = new FileAdapter();
+        //private static readonly FileAdapter _fileAdapter = new FileAdapter();
         private static readonly CustomerMapper _customerMapper = CustomerMapper.Instance;
         private static readonly StoreApplicationDBContext saDBContext = new StoreApplicationDBContext();
 
@@ -97,8 +97,8 @@ namespace Project0.StoreApplication.Storage.Repositories
 
         public List<Customer> Select()
         {
-            return _fileAdapter.ReadFromFile<Customer>(_path);
-            //return saDBContext.Customer.FromSqlRaw("Select * from Customer;").ToList();
+            //return _fileAdapter.ReadFromFile<Customer>(_path);
+            return saDBContext.Customers.FromSqlRaw("Select * from Customer;").ToList();
         }
 
         public Customer Update(Customer entry)

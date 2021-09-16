@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Project0.StoreApplication.Domain.Interfaces
 {
@@ -12,7 +15,10 @@ namespace Project0.StoreApplication.Domain.Interfaces
     bool Insert(T entry);
 
 
-    List<T> Select();
+    Task<List<T>> Select() 
+    {
+        throw new NotImplementedException(); 
+    }
 
 
     T Update(T entry);

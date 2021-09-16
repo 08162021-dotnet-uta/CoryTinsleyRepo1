@@ -12,7 +12,7 @@ namespace Project0.StoreApplication.Storage.Repositories
   {
     private const string _path = @"/home/clypto/revature/training_code/projects/data/Orders.xml";
     public List<Order_D> Orders { get; private set; }
-    private static readonly FileAdapter _fileAdapter = new FileAdapter();
+    //private static readonly FileAdapter _fileAdapter = new FileAdapter();
     private static readonly EF_Orders _ef_Orders = new EF_Orders();
 
     public OrderRepository()

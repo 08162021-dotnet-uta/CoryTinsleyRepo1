@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Project0.StoreApplication.Domain.Abstracts;
 
 #nullable disable
 
@@ -150,5 +154,7 @@ namespace Project0.StoreApplication.Storage.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-    }
-}
+
+
+    }//EOC
+}//EON

@@ -7,6 +7,20 @@ namespace Project0.StoreApplication.Storage.Models.Mapping
 {
     class ProductMapper : IModelMapper<Product, Product_D>
     {
+        public static ProductMapper _productMapper;
+        public static ProductMapper Instance
+        {
+            get
+            {
+                if (_productMapper == null)
+                {
+                    _productMapper = new ProductMapper();
+                }
+
+
+                return _productMapper;
+            }
+        }
         public Product_D ModelToViewModel(Product entry)
         {
             Product_D c = new Product_D();

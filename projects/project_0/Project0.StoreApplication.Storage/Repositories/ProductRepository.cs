@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Project0.StoreApplication.Domain.Abstracts;
 using Project0.StoreApplication.Domain.Interfaces;
 using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Adapters;
+using Project0.StoreApplication.Storage.Models;
+using Project0.StoreApplication.Storage.Models.Mapping;
 
 namespace Project0.StoreApplication.Storage.Repositories
 {
@@ -13,7 +16,9 @@ namespace Project0.StoreApplication.Storage.Repositories
   public class ProductRepository : IRepository<Product_D>
   {
     private const string _path = @"/home/clypto/revature/training_code/projects/data/products.xml";
-        //private static readonly FileAdapter _fileAdapter = new FileAdapter();
+        private static readonly ProductMapper _productMapper = ProductMapper.Instance;
+        private static readonly StoreApplicationDBContext saDBContext = new StoreApplicationDBContext();
+
         public List<Product_D> Products { get; private set; }
 
         public ProductRepository()
@@ -35,6 +40,41 @@ namespace Project0.StoreApplication.Storage.Repositories
 
       //  });
       }
+
+        private static ProductRepository _productRepository;
+
+        public static ProductRepository GetInstance()
+        {
+
+            if (_productRepository == null)
+            {
+                _productRepository = new ProductRepository();
+            }
+
+            return _productRepository;
+        }
+
+        public async Task<List<Product_D>> SelectProductByStoreIDAsync(int i)
+        {
+                     
+            //create a list of products based on store ID
+            List<Product> c1 = await saDBContext.Products.FromSqlRaw("SELECT * FROM Product WHERE StoreID = {0}", i).ToListAsync();
+
+            //Swap each list element to local model 
+            List<Product_D> c2 = new List<Product_D>();
+            foreach(Product p in c1)
+            {
+                if(p.StoreId == i)
+                {
+                    Product_D p2 = _productMapper.ModelToViewModel(p);
+                    c2.Add(p2);
+                }
+            }
+
+            //check if null
+            if (c2 == null) return null;           
+            return c2;
+        }
 
         public bool Delete(Product_D entry)
         {

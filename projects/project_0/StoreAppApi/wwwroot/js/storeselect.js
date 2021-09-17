@@ -6,13 +6,13 @@
 
 function OnSubmitForm() {
     if (document.getElementById('1').checked == true) {
-        alert("You have selected the first answer");
+        LoadCSProducts(1);
     }
     else if (document.getElementById('2').checked == true) {
-        alert("You have selected the SECOND answer");
+        LoadPSProducts(2);
     }
     else if (document.getElementById('3').checked == true) {
-        alert("You have selected the THIRD answer");
+        LoadMSProducts(3);
     }
 
     fetch(`../stores/GetAllStores`)
@@ -21,4 +21,22 @@ function OnSubmitForm() {
         console.log(res)
     })
     return false;
+}
+
+
+
+function LoadCSProducts(i) {
+    fetch(`../api/Products/SelectProductByStoreIDAsync`)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+        })
+}
+
+function LoadPSProducts(i) {
+
+}
+
+function LoadMSProducts(i) {
+
 }

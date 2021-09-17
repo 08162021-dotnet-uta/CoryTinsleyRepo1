@@ -25,10 +25,24 @@ namespace Project0.StoreApplication.Storage.Models.Mapping
         public Store_D ModelToViewModel(Store entry)
         {
             //TODO find out how to use generics with abstract store 
-            Store_D c = new ComputerStore();
+            switch(entry.StoreId)
+            {
+                case 1:
+                    ComputerStore s1 = new ComputerStore() { Name = entry.Name, StoreID = entry.StoreId };
+                    return s1;
+                case 2:
+                    PenStore s2 = new PenStore() { Name = entry.Name, StoreID = entry.StoreId };
+                    return s2;
+                case 3:
+                    MusicStore s3 = new MusicStore() { Name = entry.Name, StoreID = entry.StoreId };
+                    return s3;
+                default:
+                    return null;
+
+
+            }
             //c.StoreID = entry.StoreId;
             //c.Name = entry.Name;
-            return c;
         }
 
         public Store ViewModelToModel(Store_D entry)

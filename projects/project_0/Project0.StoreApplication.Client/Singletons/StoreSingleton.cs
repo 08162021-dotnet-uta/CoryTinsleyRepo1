@@ -36,13 +36,13 @@ namespace Project0.StoreApplication.Client.Singletons
 
     private StoreSingleton()
     {
-      Stores = _storeRepository.Select();
+      //Stores = _storeRepository.Select();
     }
 
     public void Add(Store_D Store)
     {
       _storeRepository.Insert(Store);
-      Stores = _storeRepository.Select();
+      //Stores = _storeRepository.Select();
     }
 
     public void AddProducts(Product_D Product)

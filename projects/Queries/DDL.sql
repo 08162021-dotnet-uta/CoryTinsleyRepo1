@@ -8,6 +8,8 @@ Create Table Customer
 INSERT INTO Customer(Name)
 VALUES ('Clypto'), ('Sam'), ('Jackson');
 
+
+
 alter table Customer
 	add constraint PK_Customer primary key (CustomerID);
 
@@ -48,3 +50,5 @@ ALTER TABLE [Order].[Order]
 
 ALTER TABLE Product
 	add constraint FK_Product_Store foreign key (StoreID) references Store(StoreID);
+
+INSERT INTO Store(Name) VALUES ('ComputerStore'), ('PenStore'), ('MusicStore')

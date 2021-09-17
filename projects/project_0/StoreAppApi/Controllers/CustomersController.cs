@@ -11,7 +11,7 @@ using Project0.StoreApplication.Storage.Repositories;
 
 namespace StoreAppApi.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
@@ -120,6 +120,14 @@ namespace StoreAppApi.Controllers
             Customer_D c1 = await _customerRepository.LoginCustomerAsync(cust);
             return c1;
 
+        }
+        [HttpPost("onRegister")]
+        public async Task<ActionResult<Customer_D>> onRegister(Customer_D cust)
+        {
+
+            
+            Customer_D c1 = await _customerRepository.RegisterCustomerAsync(cust);
+            return c1;
         }
     }//EOC
 }//EON

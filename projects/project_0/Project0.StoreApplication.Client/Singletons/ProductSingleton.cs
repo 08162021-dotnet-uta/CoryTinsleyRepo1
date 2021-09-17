@@ -30,7 +30,7 @@ namespace Project0.StoreApplication.Client.Singletons
 
     private ProductSingleton()
     {
-      Products = _productRepository.Select();
+      //Products = _productRepository.Select();
 
     }
 
@@ -63,7 +63,7 @@ namespace Project0.StoreApplication.Client.Singletons
     {
 
       _productRepository.Insert(product);
-      Products = _productRepository.Select();
+      //Products = _productRepository.Select();
 
     }
 

@@ -61,19 +61,21 @@ namespace Project0.StoreApplication.Storage.Repositories
             //set information from db customer to local customer
             Customer_D c3 = _customerMapper.ModelToViewModel(c2);
             return c3;
+        }
+
+        public async Task<Customer_D> RegisterCustomerAsync(Customer_D cust)
+        {
 
 
-            ////Sends customer data from local customer to DB customer
-            //Customer c = _customerMapper.ViewModelToModel(cust);
-            ////gets the amount of rows effected by the change
-            //int custIndex = await saDBContext.Database.ExecuteSqlRawAsync("INSERT INTO Customer (Name) VALUES ({0})");
-            ////if more or less than 1 row was effected by the change then something went wrong and return NULL
-            //if (custIndex != 1) return null;
+            //Sends customer data from local customer to DB customer
+            Customer c = _customerMapper.ViewModelToModel(cust);
+            //gets the amount of rows effected by the change
+            int custIndex = await saDBContext.Database.ExecuteSqlRawAsync("INSERT INTO Customer (Name) VALUES ({0})", cust.Name);
+            //if more or less than 1 row was effected by the change then something went wrong and return NULL
+            if (custIndex != 1) return null;
 
 
-            //return await LoginCustomerAsync(cust);
-
-
+            return await LoginCustomerAsync(cust);
         }
 
 

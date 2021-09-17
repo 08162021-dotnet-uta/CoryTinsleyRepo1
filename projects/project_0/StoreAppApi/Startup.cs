@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using StoreAppApi.Models;
 using Project0.StoreApplication.Storage.Models;
+using Microsoft.OpenApi.Models;
 
 namespace StoreAppApi
 {
@@ -26,10 +27,10 @@ namespace StoreAppApi
 
             services.AddDbContext<StoreAppApiContext>(opt =>
                                                       opt.UseInMemoryDatabase("StoreApp"));
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "StoreAppApi", Version = "v1" });
-            //});
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "StoreAppApi", Version = "v1" });
+            });
 
             services.AddDbContext<StoreApplicationDBContext>(options =>
             {
@@ -50,12 +51,13 @@ namespace StoreAppApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StoreAppApi v1"));
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StoreAppApi v1"));
             }
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseStatusCodePages();
 
             app.UseHttpsRedirection();
 

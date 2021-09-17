@@ -5,13 +5,24 @@ const listofstores = document.querySelector('.listofstores');
 const listofproducts = document.querySelector('.listofproducts');
 const listoforders = document.querySelector('.listoforders');
 const loginbutton = document.getElementById("loginbutton")
+const registerbutton = document.getElementById("registerbutton")
 
 
 function Login() {
     location.href = `html/login.html`;
 }
-
 loginbutton.addEventListener('click', Login)
+
+function Register() {
+    location.href = `html/register.html`;
+}
+registerbutton.addEventListener('click', Register)
+
+function ListCustomers() {
+    
+}
+listofcustomers.addEventListener('click', ListCustomers)
+
 
 //function getItems() {
 //    fetch(uri)

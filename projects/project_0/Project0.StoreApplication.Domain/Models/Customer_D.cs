@@ -15,10 +15,7 @@ namespace Project0.StoreApplication.Domain.Models
     {
 
     }
-    public Customer_D(string name)
-    {
-      Name = name;
-    }
+
 
 
     public override string ToString()

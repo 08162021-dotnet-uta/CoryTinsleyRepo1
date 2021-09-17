@@ -5,13 +5,13 @@ loginform.addEventListener('submit', (e) => {
     const fname = loginform.fname.value;
     //const lname = loginform.lname.value;
 
-    fetch(`../customers/onLogin/${fname}`)
+    fetch(`../api/customers/onLogin/${fname}`)
         .then(res => res.json())
             .then(res => {
                 console.log(res)
                 sessionStorage.setItem('user', JSON.stringify(res));
-                location.href = `storeselect.html`
+                location.href = `../html/storeselect.html`
 
-        })
+            })
 });
 
